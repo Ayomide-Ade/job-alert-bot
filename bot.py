@@ -1,3 +1,4 @@
+from keep_alive import keep_alive
 import os
 import datetime
 import pytz
@@ -110,6 +111,8 @@ async def test_scraper(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(job, parse_mode="Markdown")
 
 def main():
+    keep_alive() 
+
     request = HTTPXRequest(connect_timeout=30, read_timeout=30)
     app = Application.builder().token(BOT_TOKEN).request(request).build()
 
